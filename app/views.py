@@ -13,11 +13,11 @@ class Note(View):
         if form.is_valid():
             name = form.cleaned_data['name']
             message = form.cleaned_data['message']
-            models.NoteModel.submitted({'name': name, 'message': message})
-            return redirect('./')
+            models.NoteModel.submitted(name, message)
+            return redirect('home')
         else:
             return render(request, 'note.html', {'form': form})
 
 class Home(View):
     def get(self, request):
-        return render(request, 'homepage.html')
+        return render(request, 'homepage.html', {'Notes': models.NoteModel.objects.all()})
