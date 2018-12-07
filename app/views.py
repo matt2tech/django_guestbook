@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from . import forms
 from app import models
@@ -14,6 +14,7 @@ class Note(View):
             name = form.cleaned_data['name']
             message = form.cleaned_data['message']
             models.NoteModel.submitted({'name': name, 'message': message})
+            return redirect('./')
         else:
             return render(request, 'note.html', {'form': form})
 
