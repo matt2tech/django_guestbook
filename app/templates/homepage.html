@@ -1,6 +1,12 @@
-{% extends 'base.html' %}
-{% block body %}
+{% extends 'base.html' %} {% block body %}
 
-<a href='{% url "note" %}'><button>Leave a note!</button></a>
+<a href="{% url 'note' %}"><button>Leave a note!</button></a>
 
+<ul>
+    {% for note in Notes %}
+    <h3>{{ note.name }}</h3>
+    <h5>{{ note.date }}</h5>
+    <p>{{ note.message }}</p>
+    {% endfor %}
+</ul>
 {% endblock body %}
