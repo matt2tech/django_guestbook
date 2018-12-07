@@ -10,5 +10,5 @@ class NoteModel(models.Model):
         return self.name
 
     @staticmethod
-    def submitted(dict):
-        NoteModel(name=dict['name'], message=dict['message']).save()
+    def submitted(name, message):
+        NoteModel(name=name, message=message).save()
